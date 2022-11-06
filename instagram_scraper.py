@@ -26,32 +26,31 @@ not_now2 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH,
 
 #Search for a person
 #TODO should make a list of people
-brands = ["ablogtowatch","nike", "adidas"]
-dir_name = "pics"
-search = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div[1]/div/div[2]/div[2]/div/a"))).click()
-search_box = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div[2]/div/div/div[2]/div[1]/div/input")))
-search_box.clear()
-keyword = "ablogtowatch"
-search_box.send_keys(keyword)
-search_box.send_keys(Keys.ENTER)
-clicking_profile = WebDriverWait(driver, 40).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div[2]/div/div/div[2]/div[2]/div/div[1]/div/a"))).click()
-clicking_posts = WebDriverWait(driver, 40).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[2]/div[2]/section/main/div/div[2]/a[1]"))).click()
+search_input_words = ['bulldogs', 'bullterriers']
+for i in search_input_words:
+    search = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div[1]/div/div[2]/div[2]/div/a"))).click()
+    search_box = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div[2]/div/div/div[2]/div[1]/div/input")))
+    search_box.clear()
+    keyword = i
+    search_box.send_keys(keyword)
+    search_box.send_keys(Keys.ENTER)
+    clicking_profile = WebDriverWait(driver, 40).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div[2]/div/div/div[2]/div[2]/div/div[1]/div/a"))).click()
+    clicking_posts = WebDriverWait(driver, 40).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[2]/div[2]/section/main/div/div[2]/a[1]"))).click()
 
-#How many picture we would like to get
-driver.execute_script("window.scrollTo(0,5000);")
+    #How many picture we would like to get
+    driver.execute_script("window.scrollTo(0,5000);")
 
-#create the directory
-path = os.getcwd()
-path = os.path.join(path, keyword)
-os.mkdir(path)
+    #create the directory
+    path = os.getcwd()
+    path = os.path.join(path, keyword)
+    os.mkdir(path)
 
-#Save the images
-images = driver.find_elements(By.TAG_NAME, 'img')
-counter = 1
-for i in images:
-    imgURL = (i.get_attribute('src'))
-    filename = f"{counter}.jpg"
-    urllib.request.urlretrieve(imgURL, f"{path}/{filename}")
-    counter += 1
-
-
+    #Save the images
+    images = driver.find_elements(By.TAG_NAME, 'img')
+    counter = 1
+    for i in images:
+        imgURL = (i.get_attribute('src'))
+        filename = f"{counter}.jpg"
+        urllib.request.urlretrieve(imgURL, f"{path}/{filename}")
+        counter += 1
+    driver.get("https://www.instagram.com")
