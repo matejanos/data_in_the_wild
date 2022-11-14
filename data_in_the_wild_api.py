@@ -1,4 +1,6 @@
 import requests
+import pandas as pd
+from pathlib import Path
 
 class instagram_post:
     def __init__(self, url, date_time, caption, likes, user_id, insta_handle, post_id):
@@ -55,8 +57,19 @@ def retrieve_information_needed(response_text):
     return posts
 
 def add_posts_to_dataframe(posts):
-    posts_dataframe = []
-    return posts_dataframe
+    posts_list = []
+    posts_dataframe = pd.DataFrame()
+
+    cols = ['url', 'date_time', 'caption', 'likes', 'user_id', 'insta_handle']
+
+    for post in posts:
+        posts_list.append(post)
+
+    posts_dataframe = pd.DataFrame(posts_list, columns=cols)
+
+    filepath = Path('data.csv')  
+    filepath.parent.mkdir(parents=True, exist_ok=True)  
+    posts_dataframe.to_csv(filepath) 
 
 
 def main():
@@ -68,7 +81,6 @@ def main():
     for influencer in influencers_ids:
         user_posts = get_user_posts(influencer)   #user_posts is of type List<instagram_post>
         add_posts_to_dataframe(user_posts)
-
 
 if __name__ == "__main__":
     main()

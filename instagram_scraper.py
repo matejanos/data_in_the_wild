@@ -26,13 +26,19 @@ not_now2 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH,
 
 #Search for a person
 #TODO should make a list of people
-search_input_words = ['bulldogs', 'bullterriers']
+""" search_input_words = ['herdisathena', 'mathilde_roien', 'Josefinehj', 'Birtahlin', 'Katarinakrebs', 'Kristinetrinkjaer',
+                        'Chloemonchamp', 'Emiliemalou', 'Emmamoldt', 'Barbaraegholm', 'Annasarlvit' 'Filippajuhler', 'Karla_alajdi',
+                         'Ellakarberg', 'Annakatrinkafehr', 'Annabjorkjohansson', 'Pernilleteisbaek', 'Emilisindlev', 'Madsdamind',
+                         'Simonenoa', 'Mathildegoehler', 'Sarahdahll', 'Tommyleewinkworth', 'kennethnguyen'] """
+
+search_input_words = ['herdisathena', 'mathilde_roien']
+
 for i in search_input_words:
-    search = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div[1]/div/div[2]/div[2]/div/a"))).click()
-    search_box = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div[2]/div/div/div[2]/div[1]/div/input")))
+    search = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div/div/div/div[2]/div[2]/div/a"))).click()
+    search_box = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[2]/div[1]/div/div/div[2]/div/div/div[2]/div[1]/div/input")))
     search_box.clear()
-    keyword = i
-    search_box.send_keys(keyword)
+    #keyword = i
+    search_box.send_keys(i)
     search_box.send_keys(Keys.ENTER)
     clicking_profile = WebDriverWait(driver, 40).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div[2]/div/div/div[2]/div[2]/div/div[1]/div/a"))).click()
     clicking_posts = WebDriverWait(driver, 40).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[2]/div[2]/section/main/div/div[2]/a[1]"))).click()
@@ -42,11 +48,12 @@ for i in search_input_words:
 
     #create the directory
     path = os.getcwd()
-    path = os.path.join(path, keyword)
+    path = os.path.join(path, i)
     os.mkdir(path)
 
     #Save the images
     images = driver.find_elements(By.TAG_NAME, 'img')
+    
     counter = 1
     for i in images:
         imgURL = (i.get_attribute('src'))
