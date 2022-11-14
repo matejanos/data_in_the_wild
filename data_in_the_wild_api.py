@@ -19,18 +19,12 @@ class influencer:
 
 def get_influencers_user_ids(influencers):
     #https://www.instagram.com/web/search/topsearch/?query=<username>
-    influencers = [inf.lower() for inf in influencers]
-    #"https://api.instagram.com/v1/users/search?q=[USERNAME]&access_token=[ACCESS TOKEN]"
-    influencers_ids = []
-    url = "https://api.instagram.com/v1/users/search?q=herdisathena&access_token=IGQVJYaGFVVmxwLWZAhQ0hWeGdCNHQ3NGRtQzU3akxzSG9SYjZADUVV3c0h1VUpKVG1wbXJEa1g1R09kQm1VTVZAFTUhLa0FCRXY2alhWWC1aLVdYWmdjVnZA5dTZAXU3hFUHRObG45Y3VZAbEw1R1J4RmV5bAZDZD".format(influencers[0])
-    #url = "https://api.instagram.com/v1/users/search?q=herdisathena&client_id=1101425243845018"
-    print(influencers[0])
-    #url = "https://www.instagram.com/web/search/topsearch/?query={}".format(influencers[0])
-    print(url)
-    response = requests.request("GET", url)
-    
-    print(response.status_code)
+    #influencers = [inf.lower() for inf in influencers]
+    influencers_ids = [202803290, 342594072, 2193977, 43561023713, 14592268, 447499606, 54517270, 228768371, 622407402, 5780713, 25983225, 328945925, 54013717, 7933735,]
 
+    #response = requests.request("GET", url)
+    
+    
     return influencers_ids
 
 def get_user_posts(influencer_id):
@@ -67,13 +61,13 @@ def add_posts_to_dataframe(posts):
 
 def main():
     influencers_handles = ['herdisathena', 'mathilde_roien', 'Josefinehj', 'Birtahlin', 'Katarinakrebs', 'Kristinetrinkjaer',
-                        'Chloemonchamp', 'Emiliemalou', 'Emmamoldt', 'Barbaraegholm', 'Annasarlvit' 'Filippajuhler', 'Karla_alajdi',
+                        'Chloemonchamp', 'Emiliemalou', 'Emmamoldt', 'Barbaraegholm', 'Annasarlvit', 'Filippajuhler', 'Karla_alajdi',
                          'Ellakarberg', 'Annakatrinkafehr', 'Annabjorkjohansson', 'Pernilleteisbaek', 'Emilisindlev', 'Madsdamind',
                          'Simonenoa', 'Mathildegoehler', 'Sarahdahll', 'Tommyleewinkworth', 'kennethnguyen']
     influencers_ids = get_influencers_user_ids(influencers_handles)
-    #for influencer in influencers_ids:
-       # user_posts = get_user_posts(influencer)   #user_posts is of type List<instagram_post>
-        #add_posts_to_dataframe(user_posts)
+    for influencer in influencers_ids:
+        user_posts = get_user_posts(influencer)   #user_posts is of type List<instagram_post>
+        add_posts_to_dataframe(user_posts)
 
 
 if __name__ == "__main__":
