@@ -18,7 +18,13 @@ class influencer:
         self.follow_count = follow_count
 
 def get_influencers_user_ids(influencers):
-    influencers_ids = []
+    #https://www.instagram.com/web/search/topsearch/?query=<username>
+    #influencers = [inf.lower() for inf in influencers]
+    influencers_ids = [202803290, 342594072, 2193977, 43561023713, 14592268, 447499606, 54517270, 228768371, 622407402, 5780713, 25983225, 328945925, 54013717, 7933735,]
+
+    #response = requests.request("GET", url)
+    
+    
     return influencers_ids
 
 def get_user_posts(influencer_id):
@@ -55,7 +61,7 @@ def add_posts_to_dataframe(posts):
 
 def main():
     influencers_handles = ['herdisathena', 'mathilde_roien', 'Josefinehj', 'Birtahlin', 'Katarinakrebs', 'Kristinetrinkjaer',
-                        'Chloemonchamp', 'Emiliemalou', 'Emmamoldt', 'Barbaraegholm', 'Annasarlvit' 'Filippajuhler', 'Karla_alajdi',
+                        'Chloemonchamp', 'Emiliemalou', 'Emmamoldt', 'Barbaraegholm', 'Annasarlvit', 'Filippajuhler', 'Karla_alajdi',
                          'Ellakarberg', 'Annakatrinkafehr', 'Annabjorkjohansson', 'Pernilleteisbaek', 'Emilisindlev', 'Madsdamind',
                          'Simonenoa', 'Mathildegoehler', 'Sarahdahll', 'Tommyleewinkworth', 'kennethnguyen']
     influencers_ids = get_influencers_user_ids(influencers_handles)
