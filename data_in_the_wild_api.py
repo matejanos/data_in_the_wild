@@ -1,10 +1,12 @@
 import requests
+
 import pandas as pd
 from pathlib import Path
 from datetime import datetime
 import time
 
 influencer_post_id = 1
+
 
 class instagram_post:
     def __init__(self, url, date_time, caption, likes, user_id, insta_handle, post_id):
@@ -40,7 +42,23 @@ def get_influencers_user_ids(influencers):
 
 
 def get_influencers_user_ids(influencers):
+    print("Fetching user ids, it will take a few seconds...")
+    base = "https://instagram188.p.rapidapi.com/userid/"
+
     influencers_ids = []
+    #influencers_ids = [202803290, 342594072, 2193977, 43561023713, 14592268, 447499606, 54517270, 228768371, 622407402, 5780713, 25983225, 328945925, 54013717, 7933735,]
+    headers = {
+        "X-RapidAPI-Key": "6b130ce03bmshe9b1c5345b5fd64p151030jsn429f30217f89",
+	    "X-RapidAPI-Host": "instagram188.p.rapidapi.com"}
+    
+    for influencer in influencers:
+        url = base + influencer
+        response = requests.request("GET", url, headers=headers).json()
+        influencers_ids.append(response["data"])
+        print(response["data"])
+        time.sleep(1)
+    
+    print("Yay, i am finished!")
     return influencers_ids
 
 
@@ -163,6 +181,7 @@ def add_posts_to_dataframe(posts):
         posts_list.append(post)
 
     posts_dataframe = pd.DataFrame(posts_list, columns=cols)
+
 
     filepath = Path('data.csv')
     filepath.parent.mkdir(parents=True, exist_ok=True)
