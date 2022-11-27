@@ -13,7 +13,7 @@ To use label studio you should do the following steps:
  8. Choose **Semantic Segmentation with Masks** as a labelling setup
  9. Switch to code view
 
-    		Insert the following lines:
+    Insert the following lines:
     		<View>
 		      <Image name="image" value="$image" zoom="true"/>
 		      <BrushLabels name="tag" toName="image">
@@ -30,6 +30,7 @@ To use label studio you should do the following steps:
 			<Label value="Sun-glasses" background="#F759AB"/>
 		     </BrushLabels>
 		 </View> 
+		 
 11. Save the project
 10. Start  labelling
 
