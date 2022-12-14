@@ -14,21 +14,30 @@ To use label studio you should do the following steps:
  9. Switch to code view
  10. Insert the following lines:
  11. `<View>
-	<Image name="image" value="$image" zoom="true"/>
-	<BrushLabels name="tag" toName="image">
-		<Label value="Shirts" background="#FFA39E"/>
-		<Label value="T-shirts" background="#D4380D"/>
-		<Label value="Long-sleeves" background="#FFC069"/>
-		<Label value="Jacket" background="#AD8B00"/>
-		<Label value="Trousers" background="#D3F261"/>
-		<Label value="Shorts" background="#389E0D"/>
-		<Label value="Flip-flops" background="#5CDBD3"/>
-		<Label value="Shoes" background="#096DD9"/>
-		<Label value="Bikini" background="#ADC6FF"/>
-		<Label value="Swimming-trunks" background="#9254DE"/>
-		<Label value="Sun-glasses" background="#F759AB"/>
-	</BrushLabels>
-    </View>`
+  	<Image name="image" value="$image"/>
+  	<Choices name="choice" toName="image">
+		<Choice value="None"/>
+		<Choice value="jeans_tapered"/>
+		<Choice value="jeans_wide"/>
+		<Choice value="cargo_pants"/>
+		<Choice value="suit_pants_tapered"/>
+		<Choice value="suit_pants_wide"/>
+		<Choice value="sweat_pants"/>
+		<Choice value="track_pants"/>
+		<Choice value="curdoroy_pants"/>
+		<Choice value="micro_skirts"/>
+		<Choice value="midi_skirts"/>
+		<Choice value="maxi_skirts"/>
+		<Choice value="stockings"/>
+		<Choice value="leg_warmers"/>
+		<Choice value="shorts"/>
+		<Choice value="mid_length_shorts"/>
+		<Choice value="denim_shorts"/>
+		<Choice value="denim_skirts"/>
+		<Choice value="linen_pants"/>
+		<Choice value="cargo_skirt"/>
+	</Choices>
+</View>`
  11. Save the project
  12. Start  labelling
 
