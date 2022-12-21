@@ -53,7 +53,7 @@ def get_influencers_user_ids(influencers):
 
     influencers_ids = []
     headers = {
-        "X-RapidAPI-Key": "6b130ce03bmshe9b1c5345b5fd64p151030jsn429f30217f89",
+        "X-RapidAPI-Key": "secret",
 	    "X-RapidAPI-Host": "instagram188.p.rapidapi.com"}
     
     for influencer in influencers:
@@ -88,7 +88,7 @@ def get_user_contact_info(influencer_id):
     url = "https://instagram188.p.rapidapi.com/usercontact/" + str(influencer_id)
 
     headers = {
-        "X-RapidAPI-Key": "6b130ce03bmshe9b1c5345b5fd64p151030jsn429f30217f89",
+        "X-RapidAPI-Key": "secret",
         "X-RapidAPI-Host": "instagram188.p.rapidapi.com"
     }
     time.sleep(2)
@@ -112,7 +112,7 @@ def get_user_posts_from_api(end_cursor, user_id):
     url = "https://instagram188.p.rapidapi.com/userpost/" + str(user_id) + "/50/" + str(ending)
 
     headers = {
-        "X-RapidAPI-Key": "6b130ce03bmshe9b1c5345b5fd64p151030jsn429f30217f89",
+        "X-RapidAPI-Key": "secret",
         "X-RapidAPI-Host": "instagram188.p.rapidapi.com"
     }
     time.sleep(2)
@@ -157,7 +157,7 @@ def get_single_post_info(short_code, user_id):
     url = "https://instagram188.p.rapidapi.com/postinfo/" + short_code
 
     headers = {
-        "X-RapidAPI-Key": "6b130ce03bmshe9b1c5345b5fd64p151030jsn429f30217f89",
+        "X-RapidAPI-Key": "secret",
         "X-RapidAPI-Host": "instagram188.p.rapidapi.com"
     }
     time.sleep(2)
